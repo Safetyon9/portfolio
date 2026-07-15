@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, HostListener } from '@angular/core';
 import { Navbar } from './layout/navbar/navbar';
 import { Hero } from './sections/hero/hero';
 import { About } from './sections/about/about';
@@ -23,5 +23,21 @@ import { Experience } from "./sections/experience/experience";
   styleUrl: './app.css'
 })
 export class App {
+  
   protected readonly title = signal('portfolio');
+
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent) {
+
+    document.documentElement.style.setProperty(
+      '--mouse-x',
+      `${event.clientX}px`
+    );
+
+    document.documentElement.style.setProperty(
+      '--mouse-y',
+      `${event.clientY}px`
+    );
+
+  }
 }

@@ -1,7 +1,10 @@
 <nav class="flex flex-col gap-8">
 
   <button
+    (click)="scrollTo('about')"
     class="group relative text-left text-nav text-xl font-normal transition-all duration-300 hover:text-accent hover:translate-x-2"
+    [style.color]="sectionService.activeSection() === 'about' ? '#E85D04' : null"
+    [class.translate-x-2]="sectionService.activeSection() === 'about'"
   >
     ABOUT
     <span
@@ -11,7 +14,10 @@
 
 
   <button
+    (click)="scrollTo('experience')"
     class="group relative text-left text-nav text-xl font-normal transition-all duration-300 hover:text-accent hover:translate-x-2"
+    [style.color]="sectionService.activeSection() === 'experience' ? '#E85D04' : null"
+    [class.translate-x-2]="sectionService.activeSection() === 'experience'"
   >
     EXPERIENCE
     <span
@@ -21,7 +27,10 @@
 
 
   <button
+    (click)="scrollTo('projects')"
     class="group relative text-left text-nav text-xl font-normal transition-all duration-300 hover:text-accent hover:translate-x-2"
+    [style.color]="sectionService.activeSection() === 'projects' ? '#E85D04' : null"
+    [class.translate-x-2]="sectionService.activeSection() === 'projects'"
   >
     PROJECTS
     <span
@@ -31,7 +40,10 @@
 
 
   <button
+    (click)="scrollTo('contact')"
     class="group relative text-left text-nav text-xl font-normal transition-all duration-300 hover:text-accent hover:translate-x-2"
+    [style.color]="sectionService.activeSection() === 'contact' ? '#E85D04' : null"
+    [class.translate-x-2]="sectionService.activeSection() === 'contact'"
   >
     CONTACT
     <span

@@ -48,7 +48,11 @@ export class Projects {
       repositories: [
         {
           name: 'GitHub',
-          url: 'TUO_LINK_REPOSITORY'
+          url: 'https://github.com/Safetyon9/AsteroidWar'
+        },
+        {
+          name: 'Web App',
+          url: 'https://safetyon9.github.io/AsteroidWar/'
         }
       ],
 

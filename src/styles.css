@@ -17,6 +17,8 @@
   --color-text-muted: #A3A3A3;
   --color-nav: #737373;
   --color-accent: #E85D04;
+
+  --breakpoint-desktop: 1072px;
 }
 
 html {

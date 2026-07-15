@@ -1,20 +1,35 @@
 <article
-  class="group flex gap-8 rounded-2xl border border-transparent p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-neutral-800 hover:bg-[#151515]"
+  class="
+    group
+    flex
+    gap-5
+    rounded-2xl
+    border
+    border-transparent
+    p-5
+    transition-all
+    duration-300
+    ease-out
+    hover:-translate-y-1
+    hover:border-neutral-800
+    hover:bg-[#151515]
+
+    sm:gap-8
+    sm:p-6
+  "
 >
 
-  <div class="flex shrink-0 items-center">
+<div class="hidden shrink-0 items-center md:flex">
     
-    <div
-      class="h-20 w-[120px] overflow-hidden rounded-xl"
-    >
-      <img
-        [src]="project.image"
-        [alt]="project.title"
-        class="h-full w-full object-cover"
-      />
-    </div>
-
+  <div class="h-20 w-[120px] overflow-hidden rounded-xl">
+    <img
+      [src]="project.image"
+      [alt]="project.title"
+      class="h-full w-full object-cover"
+    />
   </div>
+
+</div>
 
 
   <div class="flex flex-col">
@@ -68,7 +83,28 @@
       @if (showRepositories) {
 
         <div
-          class="absolute left-full top-0 ml-3 z-20 flex min-w-32 flex-col gap-2 rounded-xl border border-neutral-800 bg-[#151515] p-3 shadow-lg"
+          class="
+            absolute
+            left-0
+            top-full
+            mt-2
+            z-20
+            flex
+            min-w-32
+            flex-col
+            gap-2
+            rounded-xl
+            border
+            border-neutral-800
+            bg-[#151515]
+            p-3
+            shadow-lg
+
+            desktop:left-full
+            desktop:top-0
+            desktop:ml-3
+            desktop:mt-0
+          "
         >
 
           @for (repo of project.repositories; track repo.name) {

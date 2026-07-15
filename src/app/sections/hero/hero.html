@@ -11,8 +11,33 @@
     </span>
   </h2>
 
-  <p class="mt-2 max-w-xs text-text-muted text-base leading-relaxed font-normal">
-    I build scalable full-stack applications with clean architecture and modern technologies.
-  </p>
+
+  @switch(sectionService.activeSection()) {
+
+    @case('about') {
+      <p class="description animate-fade mt-2 max-w-xs text-text-muted text-base leading-relaxed font-normal">
+        {{ description }}
+      </p>
+    }
+
+    @case('experience') {
+      <p class="description animate-fade mt-2 max-w-xs text-text-muted text-base leading-relaxed font-normal">
+        {{ description }}
+      </p>
+    }
+
+    @case('projects') {
+      <p class="description animate-fade mt-2 max-w-xs text-text-muted text-base leading-relaxed font-normal">
+        {{ description }}
+      </p>
+    }
+
+    @case('contact') {
+      <p class="description animate-fade mt-2 max-w-xs text-text-muted text-base leading-relaxed font-normal">
+        {{ description }}
+      </p>
+    }
+
+  }
 
 </section>
