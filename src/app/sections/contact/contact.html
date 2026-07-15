@@ -1,0 +1,28 @@
+<section class="flex flex-col items-center justify-center py-16 text-center">
+
+  <h2 class="text-xl font-semibold text-text">
+    Contact me here
+  </h2>
+
+  <button
+    (click)="copyEmail()"
+    class="group mt-4 rounded- border border-neutral-800 px-8 py-5 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent hover:bg-neutral-900 hover:shadow-lg"
+  >
+    <span
+      class="font-mono text-xl tracking-wide text-text transition-colors duration-300 group-hover:text-accent"
+    >
+      vinrusso.dev@proton.me
+    </span>
+  </button>
+
+  <p
+    class="h-5 text-sm text-accent transition-opacity duration-300"
+  >
+    {{ copied ? "Email copied to clipboard" : "Click to copy" }}
+  </p>
+
+  <p class="mt-64 max-w-2xl text-base font-normal leading-7 text-text-muted">
+    Designed in Figma and crafted in Visual Studio Code. Built with Angular, Vite, Node.js, and Tailwind CSS, then deployed on GitHub Pages. Typography is set in Inter.
+    </p>
+
+</section>

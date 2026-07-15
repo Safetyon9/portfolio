@@ -1,0 +1,15 @@
+<section
+  class="mt-16 flex w-full flex-col gap-8"
+>
+
+
+  @for (project of projects; track project.title) {
+
+    <app-project-card
+      [project]="project"
+    />
+
+  }
+
+
+</section>

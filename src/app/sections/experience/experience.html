@@ -1,0 +1,13 @@
+<section 
+  class="relative grid grid-cols-[120px_1fr] gap-x-8 gap-y-10 mt-16 w-full text-left text-text-muted text-base font-normal leading-7"
+>
+
+  @for (experience of experiences; track experience.role) {
+
+    <app-experience-item
+      [experience]="experience"
+    />
+
+  }
+
+</section>

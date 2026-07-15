@@ -1,0 +1,33 @@
+:host {
+    display: block;
+    min-height: 100vh;
+}
+
+.page {
+    min-height: 100vh;
+    padding-block: 6.25vh;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 66.67%;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.left {
+    position: sticky;
+    top: 6.25vh;
+    height: 87.5vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}

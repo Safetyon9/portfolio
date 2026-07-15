@@ -1,3 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+.font-geist {
+  font-family: Geist, sans-serif;
+}
+
+@theme {
+  --color-bg: #090909;
+  --color-text: #F5F5F5;
+  --color-text-muted: #A3A3A3;
+  --color-nav: #737373;
+  --color-accent: #E85D04;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: Inter, system-ui, sans-serif;
+}
