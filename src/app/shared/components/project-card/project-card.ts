@@ -31,4 +31,16 @@ export class ProjectCard {
   toggleRepositories() {
     this.showRepositories = !this.showRepositories;
   }
+
+  onCardClick(): void {
+    if ((this.project.repositories?.length ?? 0) === 1) {
+      window.open(
+        this.project.repositories![0].url,
+        '_blank',
+        'noopener,noreferrer'
+      );
+    } else {
+      this.toggleRepositories();
+    }
+  }
 }

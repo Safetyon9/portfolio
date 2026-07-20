@@ -1,7 +1,13 @@
 <article
+  tabindex="0"
+  role="button"
+  (click)="onCardClick()"
+  (keydown.enter)="onCardClick()"
+  (keydown.space)="$event.preventDefault(); onCardClick()"
   class="
     group
     flex
+    cursor-pointer
     gap-5
     rounded-2xl
     border
@@ -13,118 +19,109 @@
     hover:-translate-y-1
     hover:border-neutral-800
     hover:bg-[#151515]
+    focus:outline-none
+    focus:ring-2
+    focus:ring-accent
 
     sm:gap-8
     sm:p-6
   "
 >
-
-<div class="hidden shrink-0 items-center md:flex">
-    
-  <div class="h-20 w-[120px] overflow-hidden rounded-xl">
-    <img
-      [src]="project.image"
-      [alt]="project.title"
-      class="h-full w-full object-cover"
-    />
+  <div class="hidden shrink-0 items-center md:flex">
+    <div class="h-20 w-[120px] overflow-hidden rounded-xl">
+      <img
+        [src]="project.image"
+        [alt]="project.title"
+        class="h-full w-full object-cover"
+      />
+    </div>
   </div>
-
-</div>
-
 
   <div class="flex flex-col">
 
     <div class="relative flex items-center gap-2">
 
-      <h3
-        class="text-xl font-medium text-text"
-      >
+      <h3 class="text-xl font-medium text-text">
         {{ project.title }}
       </h3>
 
-    @if (project.repositories?.length === 1) {
-
-      <a
-        [href]="project.repositories?.[0]?.url"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-text-muted transition-colors duration-300 hover:text-accent"
-        aria-label="Open repository"
-      >
-        <span
-          class="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-        >
-          ↗
-        </span>
-      </a>
-
-    }
-
-
-    @if ((project.repositories?.length ?? 0) > 1) {
-
-      <button
-        type="button"
-        (click)="toggleRepositories()"
-        class="text-text-muted transition-colors duration-300 hover:text-accent"
-        aria-label="View repositories"
-      >
+      @if (project.repositories?.length === 1) {
 
         <span
-          class="inline-block transition-transform duration-300"
-          [class.rotate-45]="showRepositories"
+          aria-hidden="true"
+          class="text-text-muted transition-colors duration-300 group-hover:text-accent"
         >
-          ↗
+          <span
+            class="inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+          >
+            ↗
+          </span>
         </span>
-
-      </button>
-
-
-      @if (showRepositories) {
-
-        <div
-          class="
-            absolute
-            left-0
-            top-full
-            mt-2
-            z-20
-            flex
-            min-w-32
-            flex-col
-            gap-2
-            rounded-xl
-            border
-            border-neutral-800
-            bg-[#151515]
-            p-3
-            shadow-lg
-
-            desktop:left-full
-            desktop:top-0
-            desktop:ml-3
-            desktop:mt-0
-          "
-        >
-
-          @for (repo of project.repositories; track repo.name) {
-
-            <a
-              [href]="repo.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-sm text-text-muted transition-colors duration-300 hover:text-accent"
-            >
-              {{ repo.name }} ↗
-            </a>
-
-          }
-
-        </div>
 
       }
 
-    }
+      @if ((project.repositories?.length ?? 0) > 1) {
+
+        <button
+          type="button"
+          (click)="$event.stopPropagation(); toggleRepositories()"
+          class="text-text-muted transition-colors duration-300 hover:text-accent"
+          aria-label="View repositories"
+        >
+          <span
+            class="inline-block transition-transform duration-300"
+            [class.rotate-45]="showRepositories"
+          >
+            ↗
+          </span>
+        </button>
+
+        @if (showRepositories) {
+
+          <div
+            class="
+              absolute
+              left-0
+              top-full
+              z-20
+              mt-2
+              flex
+              min-w-32
+              flex-col
+              gap-2
+              rounded-xl
+              border
+              border-neutral-800
+              bg-[#151515]
+              p-3
+              shadow-lg
+
+              desktop:left-full
+              desktop:top-0
+              desktop:ml-3
+              desktop:mt-0
+            "
+            (click)="$event.stopPropagation()"
+          >
+
+            @for (repo of project.repositories; track repo.name) {
+
+              <a
+                [href]="repo.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-text-muted transition-colors duration-300 hover:text-accent"
+              >
+                {{ repo.name }} ↗
+              </a>
+
+            }
+
+          </div>
+
+        }
+
+      }
 
     </div>
 
@@ -134,9 +131,7 @@
       {{ project.description }}
     </p>
 
-    <div
-      class="mt-5 flex flex-wrap gap-3"
-    >
+    <div class="mt-5 flex flex-wrap gap-3">
 
       @for (tech of project.technologies; track tech) {
 
@@ -147,7 +142,6 @@
       }
 
     </div>
-
 
   </div>
 
