@@ -5,21 +5,35 @@
   </h2>
 
   <button
+    type="button"
     (click)="copyEmail()"
-    class="group mt-4 rounded- border border-neutral-800 px-8 py-5 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent hover:bg-neutral-900 hover:shadow-lg"
+    [disabled]="copying()"
+    [attr.aria-busy]="copying()"
+    aria-label="Copy email address: vinrusso.dev@proton.me"
+    class="group mt-4 max-w-full min-w-0 border border-neutral-800 px-3 py-5 sm:px-8 transition-all duration-300 ease-out hover:-translate-y-1 hover:border-accent hover:bg-neutral-900 hover:shadow-lg"
   >
     <span
-      class="font-mono text-xl tracking-wide text-text transition-colors duration-300 group-hover:text-accent"
+      class="block select-text font-mono text-base sm:text-xl tracking-wide [overflow-wrap:anywhere] text-text transition-colors duration-300 group-hover:text-accent"
     >
       vinrusso.dev@proton.me
     </span>
   </button>
 
   <p
-    class="h-5 text-sm text-accent transition-opacity duration-300"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    class="min-h-5 max-w-full text-sm text-accent transition-opacity duration-300"
   >
-    {{ copied ? "Email copied to clipboard" : "Click to copy" }}
+    {{ copyStatus() }}
   </p>
+
+  <a
+    href="/privacy.html"
+    class="mt-4 text-sm text-text-muted underline decoration-neutral-700 underline-offset-4 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+  >
+    Privacy Policy
+  </a>
 
   <p class="mt-64 max-w-2xl text-base font-normal leading-7 text-text-muted">
     Designed in Figma and crafted in Visual Studio Code. Built with Angular, Vite, Node.js, and Tailwind CSS, then deployed on GitHub Pages. Typography is set in Inter.

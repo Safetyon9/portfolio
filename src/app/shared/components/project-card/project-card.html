@@ -1,13 +1,8 @@
 <article
-  tabindex="0"
-  role="button"
-  (click)="onCardClick()"
-  (keydown.enter)="onCardClick()"
-  (keydown.space)="$event.preventDefault(); onCardClick()"
   class="
     group
+    relative
     flex
-    cursor-pointer
     gap-5
     rounded-2xl
     border
@@ -19,14 +14,20 @@
     hover:-translate-y-1
     hover:border-neutral-800
     hover:bg-[#151515]
-    focus:outline-none
-    focus:ring-2
-    focus:ring-accent
 
     sm:gap-8
     sm:p-6
   "
 >
+  @if (project.repositories?.length) {
+    <button
+      type="button"
+      (click)="onCardClick()"
+      [attr.aria-label]="project.repositories!.length > 1 ? 'View links for ' + project.title : 'Open ' + project.title + ' (new tab)'"
+      [attr.aria-expanded]="project.repositories!.length > 1 ? showRepositories : null"
+      class="absolute inset-0 z-10 cursor-pointer rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+    ></button>
+  }
   <div class="hidden shrink-0 items-center md:flex">
     <div class="h-20 w-[120px] overflow-hidden rounded-xl">
       <img
@@ -62,11 +63,9 @@
 
       @if ((project.repositories?.length ?? 0) > 1) {
 
-        <button
-          type="button"
-          (click)="$event.stopPropagation(); toggleRepositories()"
+        <span
           class="text-text-muted transition-colors duration-300 hover:text-accent"
-          aria-label="View repositories"
+          aria-hidden="true"
         >
           <span
             class="inline-block transition-transform duration-300"
@@ -74,7 +73,7 @@
           >
             ↗
           </span>
-        </button>
+        </span>
 
         @if (showRepositories) {
 
@@ -101,7 +100,7 @@
               desktop:ml-3
               desktop:mt-0
             "
-            (click)="$event.stopPropagation()"
+            (keydown.escape)="showRepositories = false"
           >
 
             @for (repo of project.repositories; track repo.name) {

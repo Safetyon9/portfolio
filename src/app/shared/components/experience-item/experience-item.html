@@ -17,4 +17,15 @@
     {{ experience.description }}
   </p>
 
+  @if (experience.projects?.length) {
+    <ul class="mt-5 max-w-3xl space-y-6">
+      @for (project of experience.projects; track project.title) {
+        <li>
+          <h4 class="text-text font-medium">{{ project.title }}</h4>
+          <p class="mt-2">{{ project.description }}</p>
+        </li>
+      }
+    </ul>
+  }
+
 </div>

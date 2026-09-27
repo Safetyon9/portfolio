@@ -4,6 +4,7 @@ export interface Experience {
   period: string;
   role: string;
   description: string;
+  projects?: { title: string; description: string }[];
 }
 
 @Component({
