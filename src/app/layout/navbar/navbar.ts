@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { afterNextRender, Component, DestroyRef, inject } from '@angular/core';
 import { SectionService } from '../../services/section.service';
 
 @Component({
@@ -7,11 +7,15 @@ import { SectionService } from '../../services/section.service';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
-export class Navbar implements AfterViewInit {
+export class Navbar {
+
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor(
     public sectionService: SectionService
-  ) {}
+  ) {
+    afterNextRender(() => this.observeSections());
+  }
 
 
   scrollTo(id: string) {
@@ -22,7 +26,9 @@ export class Navbar implements AfterViewInit {
   }
 
 
-  ngAfterViewInit() {
+  private observeSections() {
+
+    if (typeof IntersectionObserver === 'undefined') return;
 
     const sections = document.querySelectorAll('section[id]');
 
@@ -50,6 +56,8 @@ export class Navbar implements AfterViewInit {
     sections.forEach((section) => {
       observer.observe(section);
     });
+
+    this.destroyRef.onDestroy(() => observer.disconnect());
 
   }
 

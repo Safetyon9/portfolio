@@ -38,6 +38,9 @@ jobs:
       - name: Build portfolio
         run: npm run build
 
+      - name: Check static SEO output
+        run: node scripts/check-seo.mjs
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
